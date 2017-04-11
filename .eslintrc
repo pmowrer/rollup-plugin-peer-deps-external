@@ -1,0 +1,23 @@
+rules:
+  # http://eslint.org/docs/user-guide/configuring#configuring-rules
+  quotes:
+    - 2
+    - single
+    - { allowTemplateLiterals: true }
+  linebreak-style:
+    - 2
+    - unix
+  semi:
+    - 2
+    - always
+  no-console:
+    - 0
+  comma-dangle:
+    - 2
+    - always-multiline
+  no-case-declarations:
+    - 0
+env:
+  es6: true
+  node: true
+extends: 'eslint:recommended'
