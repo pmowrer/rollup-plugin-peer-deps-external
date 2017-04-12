@@ -1,0 +1,38 @@
+{
+  "name": "rollup-plugin-peer-deps-external",
+  "version": "1.0.0",
+  "description": "Rollup plugin to automatically add a library's peerDependencies to its bundle's external config.",
+  "keywords": [
+    "rollup",
+    "plugin",
+    "rollup-plugin",
+    "peerDependencies",
+    "external",
+    "optimize",
+    "exclude"
+  ],
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clear": "rimraf ./dist",
+    "build": "rollup -c",
+    "prepublish": "yarn clear && yarn build"
+  },
+  "main": "./dist/rollup-plugin-peer-deps-external.js",
+  "module": "./dist/rollup-plugin-peer-deps-external.module.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "rollup": "^0.41.6"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-watch": "^3.2.2"
+  }
+}
