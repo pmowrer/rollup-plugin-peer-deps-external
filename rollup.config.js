@@ -1,17 +1,17 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-  entry: './src/index.js',
+  input: './src/index.js',
   plugins: [
     babel(),
   ],
-  targets: [
+  output: [
     {
-      dest: './dist/rollup-plugin-peer-deps-external.js',
+      file: './dist/rollup-plugin-peer-deps-external.js',
       format: 'cjs',
     },
     {
-      dest: './dist/rollup-plugin-peer-deps-external.module.js',
+      file: './dist/rollup-plugin-peer-deps-external.module.js',
       format: 'es',
     }
   ],
