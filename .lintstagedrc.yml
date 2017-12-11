@@ -1,0 +1,4 @@
+linters:
+  /*.{js,css}:
+    - yarn format
+    - git add
