@@ -1,17 +1,22 @@
 import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
 
 export default {
-  entry: './src/index.js',
+  input: './src/index.js',
   plugins: [
-    babel(),
+    resolve(),
+    babel({
+      include: 'src/**/*.js',
+      exclude: 'node_modules/**',
+    }),
   ],
-  targets: [
+  output: [
     {
-      dest: './dist/rollup-plugin-peer-deps-external.js',
+      file: './dist/rollup-plugin-peer-deps-external.js',
       format: 'cjs',
     },
     {
-      dest: './dist/rollup-plugin-peer-deps-external.module.js',
+      file: './dist/rollup-plugin-peer-deps-external.module.js',
       format: 'es',
     }
   ],

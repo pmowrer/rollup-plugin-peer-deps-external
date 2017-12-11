@@ -1,19 +1,20 @@
-export default function PeerDepsExternalPlugin(options = {}) {
+import { either, pipe } from 'ramda';
+import externalToFn from './external-to-fn';
+import getModulesMatcher from './get-modules-matcher';
+import getPeerDeps from './get-peer-deps';
+
+export default function PeerDepsExternalPlugin() {
   return {
     name: 'peer-deps-external',
     options: opts => {
-      opts.external = getPeerDependencies().concat(opts.external);
+      opts.external = either(
+        // Retain existing `external` config
+        externalToFn(opts.external),
+        // Add `peerDependencies` to `external` config
+        getModulesMatcher(getPeerDeps())
+      );
+
       return opts;
     },
   };
-}
-
-function getPeerDependencies() {
-  try {
-    const { resolve } = require('path');
-    const pkg = require(resolve(process.cwd(), 'package.json'));
-    return Object.keys(pkg.peerDependencies);
-  } catch(err) {
-    return [];
-  }
 }
