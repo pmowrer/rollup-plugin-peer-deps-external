@@ -1,7 +1,8 @@
-export default function getPeerDeps() {
+const { resolve } = require('path');
+
+export default function getPeerDeps(path = resolve(process.cwd(), 'package.json')) {
   try {
-    const { resolve } = require('path');
-    const pkg = require(resolve(process.cwd(), 'package.json'));
+    const pkg = require(path);
     return Object.keys(pkg.peerDependencies);
   } catch (err) {
     return [];

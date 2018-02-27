@@ -3,7 +3,7 @@ import externalToFn from './external-to-fn';
 import getModulesMatcher from './get-modules-matcher';
 import getPeerDeps from './get-peer-deps';
 
-export default function PeerDepsExternalPlugin() {
+export default function PeerDepsExternalPlugin({packageJsonPath} = {}) {
   return {
     name: 'peer-deps-external',
     options: opts => {
@@ -11,7 +11,7 @@ export default function PeerDepsExternalPlugin() {
         // Retain existing `external` config
         externalToFn(opts.external),
         // Add `peerDependencies` to `external` config
-        getModulesMatcher(getPeerDeps())
+        getModulesMatcher(getPeerDeps(packageJsonPath))
       );
 
       return opts;

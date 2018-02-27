@@ -30,3 +30,20 @@ export default {
   ],
 }
 ```
+
+## Options
+### packageJsonPath
+If your `package.json` is not in the current working directory you can specify the path to the file
+```javascript
+// Add to plugins array in rollup.config.js
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+
+export default {
+  plugins: [
+    // Preferably set as first plugin.
+    peerDepsExternal({
+      packageJsonPath: 'my/folder/package.json'
+    }),
+  ],
+}
+```
