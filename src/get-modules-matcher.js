@@ -13,4 +13,4 @@ export default function getModulesMatcher(modulesNames) {
   return id => regexps.some(regexp => regexp.test(id));
 }
 
-const moduleRegExp = module => new RegExp(`^${module}(\\/\\w+)*$`);
+const moduleRegExp = module => new RegExp(`^${module}(\\/\.+)*$`);

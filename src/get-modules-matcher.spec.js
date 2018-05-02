@@ -12,12 +12,13 @@ describe('#getModulesMatcher', () => {
 
   describe('when passed an array of module names', () => {
     it('returns a predicate that returns true for matching modules', () => {
-      const fn = getModulesMatcher(['lodash', 'ramda']);
+      const fn = getModulesMatcher(['lodash', 'ramda', 'antd']);
 
       expect(fn('lodash')).toBe(true);
       expect(fn('lodash/map')).toBe(true);
       expect(fn('lodash/object/pick')).toBe(true);
       expect(fn('ramda')).toBe(true);
+      expect(fn('antd/lib/date-picker')).toBe(true);
       expect(fn('babel-plugin-lodash')).toBe(false);
       expect(fn('lodash-es')).toBe(false);
     });
