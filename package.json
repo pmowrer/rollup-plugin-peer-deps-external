@@ -24,8 +24,7 @@
     "format:all": "yarn format \"src/**/*.js\"",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn test && yarn build",
-    "test": "jest",
-    "prepare": "npm run build"
+    "test": "jest"
   },
   "main": "./dist/rollup-plugin-peer-deps-external.js",
   "module": "./dist/rollup-plugin-peer-deps-external.module.js",
