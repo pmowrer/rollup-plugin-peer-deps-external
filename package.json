@@ -2,6 +2,7 @@
   "name": "rollup-plugin-peer-deps-external",
   "version": "0.0.0-development",
   "description": "Rollup plugin to automatically add a library's peerDependencies to its bundle's external config.",
+  "repository": "Updater/rollup-plugin-peer-deps-external",  
   "keywords": [
     "rollup",
     "plugin",
