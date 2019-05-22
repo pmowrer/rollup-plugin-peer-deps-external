@@ -30,7 +30,7 @@
   "module": "./dist/rollup-plugin-peer-deps-external.module.js",
   "license": "MIT",
   "peerDependencies": {
-    "rollup": "*"
+    "rollup": "^0.x"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
