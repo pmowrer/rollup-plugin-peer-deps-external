@@ -50,7 +50,7 @@ export default {
 ```
 
 ### includeDependencies
-Sometimes it's necessary to include a package as a direct dependency instead of a peer dependency. This can happen if your package has a very specific requirement on the dependency and cannot accecpt another version. In this case set `includeDependencies` to `true` and all of your packages dependencies will also be included as externals
+Sometimes it's necessary to include a package as a direct dependency instead of a peer dependency. This can happen if your package has a very specific requirement on the dependency and cannot accept another version. In this case set `includeDependencies` to `true` and all of your packages dependencies will also be included as externals
 
 ```javascript
 // Add to plugins array in rollup.config.js
