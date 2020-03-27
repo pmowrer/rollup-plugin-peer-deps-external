@@ -2,7 +2,6 @@
 
 # Rollup Plugin Peer Deps External
 Automatically externalize `peerDependencies` in a `rollup` bundle.
-Also optionally externalize `dependencies` in a `rollup` bundle.
 
 ## Motivation
 When bundling a library using [`rollup`](https://github.com/rollup/rollup), we generally want to keep from including  [`peerDependencies`](https://nodejs.org/en/blog/npm/peer-dependencies/) since they are expected to be  provided by the consumer of the library. By excluding these dependencies, we keep bundle size down and avoid bundling duplicate dependencies.
@@ -44,8 +43,8 @@ export default {
 }
 ```
 
-### includeDependencies
-Sometimes it's necessary to include a package as a direct dependency instead of a peer dependency. This can happen if your package has a very specific requirement on the dependency and cannot accept another version. In this case set `includeDependencies` to `true` and all of your package's dependencies will also be included as externals
+### includeDependencies \*\**deprecated*\*\*
+Set `includeDependencies` to `true` to also externalize regular dependencies in addition to peer deps.
 
 ```javascript
 // Add to plugins array in rollup.config.js
