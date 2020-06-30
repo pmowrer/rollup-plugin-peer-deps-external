@@ -8,6 +8,28 @@ describe('#externalToFn', () => {
     });
   });
 
+  describe('when passed an a module name', () => {
+    it('returns a predicate returning true if passed the module name', () => {
+      const fn = externalToFn('lodash');
+
+      expect(fn('lodash')).toBe(true);
+      expect(fn('lodash-')).toBe(false);
+      expect(fn('lodash-es')).toBe(false);
+      expect(fn('lodash/map')).toBe(false);
+    });
+  });
+
+  describe('when passed a regex name', () => {
+    it('returns a predicate returning true if passed a module name matching the regex', () => {
+      const fn = externalToFn(/-/);
+
+      expect(fn('lodash')).toBe(false);
+      expect(fn('lodash-')).toBe(true);
+      expect(fn('lodash-es')).toBe(true);
+      expect(fn('lodash/map')).toBe(false);
+    });
+  });
+
   describe('when passed an array of module names', () => {
     it('returns a predicate returning true if passed one of the module names', () => {
       const modules = ['lodash', 'lodash-es'];
@@ -20,9 +42,22 @@ describe('#externalToFn', () => {
     });
   });
 
-  describe('when passed anything but a function or array', () => {
+  describe('when passed an array of regexes', () => {
+    it('returns a predicate returning true if passed a module name matching one of the regexes', () => {
+      const regexes = [/es/, /\//];
+      const fn = externalToFn(regexes);
+
+      expect(fn('lodash')).toBe(false);
+      expect(fn('lodash-')).toBe(false);
+      expect(fn('lodash-es')).toBe(true);
+      expect(fn('lodash/map')).toBe(true);
+    });
+  });
+
+  describe('when passed anything else', () => {
     it('throws an error', () => {
-      expect(() => externalToFn('string')).toThrow();
+      expect(() => externalToFn(undefined)).toThrow();
+      expect(() => externalToFn(null)).toThrow();
     });
   });
 });
