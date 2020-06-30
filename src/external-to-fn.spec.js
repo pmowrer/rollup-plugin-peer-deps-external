@@ -54,9 +54,19 @@ describe('#externalToFn', () => {
     });
   });
 
+  describe('when passed undefined', () => {
+    it('returns false', () => {
+      const fn = externalToFn(undefined);
+
+      expect(fn('lodash')).toBe(false);
+      expect(fn('lodash-')).toBe(false);
+      expect(fn('lodash-es')).toBe(false);
+      expect(fn('lodash/map')).toBe(false);
+    });
+  });
+
   describe('when passed anything else', () => {
     it('throws an error', () => {
-      expect(() => externalToFn(undefined)).toThrow();
       expect(() => externalToFn(null)).toThrow();
     });
   });

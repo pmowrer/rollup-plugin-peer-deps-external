@@ -29,6 +29,13 @@ export default function externalToFn(external) {
       external.some(module =>
         module instanceof RegExp ? module.test(id) : module === id
       );
+  }
+  // Per the rollup docs, `undefined` isn't a valid value for the `external` option,
+  // but it has been reported to have been passed in configs starting with 2.11.0.
+  // It's unclear why it's happening so we'll support it for now:
+  // https://github.com/pmowrer/rollup-plugin-peer-deps-external/issues/29
+  else if (typeof external === 'undefined') {
+    return () => false;
   } else {
     throw new Error(
       `rollup-plugin-peer-deps-external: 'external' option must be a function or an array.`
