@@ -5,7 +5,8 @@ import getDeps from './get-deps';
 
 export default function PeerDepsExternalPlugin({
   packageJsonPath,
-  includeDependencies,
+  includeDependencies = false,
+  includeOptional = false,
 } = {}) {
   return {
     name: 'peer-deps-external',
@@ -17,6 +18,8 @@ export default function PeerDepsExternalPlugin({
         getModulesMatcher(
           getDeps(packageJsonPath, 'peerDependencies').concat(
             includeDependencies ? getDeps(packageJsonPath, 'dependencies') : []
+          ).cocat(
+            includeOptional ? getDeps(packageJsonPath, 'optionalDependencies') : []
           )
         )
       );
