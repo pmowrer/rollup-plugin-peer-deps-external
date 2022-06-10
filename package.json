@@ -45,7 +45,7 @@
     "ramda": "^0.26.1",
     "rimraf": "^3.0.1",
     "rollup": "^2.13.1",
-    "semantic-release": "^17.0.2",
+    "semantic-release": "^19.0.3",
     "semantic-release-github-pr": "^6.0.0"
   },
   "jest": {
